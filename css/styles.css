@@ -1,0 +1,438 @@
+/* Clinical Trial Pathway - Styles
+   Ported from ChronlogicalLifeCycle/timeline-styles.css, keeping its look. */
+
+/* Theme colours (changed by the Color Theme setting) */
+:root {
+    --primary-color: #00A3E0;
+    --secondary-color: #005587;
+    --header-primary: #F4F4F4;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header */
+.header {
+    background: var(--header-primary);
+    padding: 12px 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.6em;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    padding: 20px 25px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.timeline-summary {
+    flex-grow: 1;
+}
+
+.summary-text {
+    font-size: 13px;
+    color: #495057;
+    font-weight: 500;
+}
+
+.back-link {
+    margin-right: 8px;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.status-chip {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 12px;
+    background: white;
+}
+
+.status-chip:empty {
+    display: none;
+}
+
+/* Form elements */
+select,
+input[type="search"] {
+    padding: 8px 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 12px;
+    background: white;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="search"] {
+    width: 190px;
+}
+
+select:focus,
+input[type="search"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 163, 224, 0.1);
+}
+
+input:disabled {
+    background: #f1f3f5;
+}
+
+/* Buttons */
+button {
+    padding: 6px 10px;
+    font: inherit;
+    font-size: 11px;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:focus-visible {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 163, 224, 0.1);
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 163, 224, 0.2);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.icon-button {
+    min-width: 34px;
+    height: 32px;
+    padding: 0 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Settings */
+.settings-icon {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    padding: 4px;
+    line-height: 0;
+    color: #6c757d;
+    border: none;
+    background: transparent;
+}
+
+.settings-icon:hover:not(:disabled) {
+    color: var(--primary-color);
+    box-shadow: none;
+}
+
+.advanced-controls-panel {
+    position: absolute;
+    top: 100%;
+    right: 12px;
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.advanced-controls-panel .control-group {
+    margin-bottom: 12px;
+}
+
+.advanced-controls-panel .control-group:last-child {
+    margin-bottom: 0;
+}
+
+.speed-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.speed-row input {
+    accent-color: var(--primary-color);
+}
+
+/* Timeline */
+.timeline-container {
+    padding: 40px;
+    min-height: 600px;
+    position: relative;
+}
+
+.timeline-svg {
+    display: block;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
+}
+
+.guide-path {
+    fill: none;
+    stroke: #dcdcdc;
+    stroke-width: 1;
+    stroke-dasharray: 2, 3;
+}
+
+.active-path {
+    fill: none;
+    stroke: url(#pathGradient);
+    stroke-width: 5;
+    stroke-linecap: round;
+}
+
+.gradient-start {
+    stop-color: var(--primary-color);
+}
+
+.gradient-end {
+    stop-color: var(--secondary-color);
+}
+
+/* Event icons: white badge with an outline glyph */
+.event-badge {
+    fill: white;
+    stroke: var(--primary-color);
+    stroke-width: 2;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.event-glyph {
+    fill: none;
+    stroke: var(--secondary-color);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.has-link .event-badge {
+    filter: drop-shadow(0 0 4px var(--primary-color));
+}
+
+.has-link {
+    cursor: pointer;
+}
+
+.event-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-anchor: middle;
+    fill: #333;
+    pointer-events: none;
+}
+
+.event-date {
+    font-size: 9px;
+    text-anchor: middle;
+    fill: #666;
+    pointer-events: none;
+}
+
+.progress-marker {
+    fill: var(--secondary-color);
+    stroke: white;
+    stroke-width: 2;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    pointer-events: none;
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 13px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    max-width: 300px;
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tooltip h4 {
+    margin: 0 0 8px 0;
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+.tooltip .detail {
+    margin: 4px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.tooltip .label {
+    font-weight: 600;
+}
+
+.tooltip .hint {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #bbb;
+}
+
+/* Details card (touch screens): same look as the tooltip, but it can be tapped */
+.details-panel {
+    position: absolute;
+    width: 260px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    border-radius: 10px;
+    font-size: 13px;
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.details-panel h4 {
+    margin: 0 24px 8px 0;
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+.details-panel .detail {
+    margin: 4px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.details-panel .label {
+    font-weight: 600;
+}
+
+.details-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    padding: 2px 6px;
+    font-size: 18px;
+    line-height: 1;
+    color: #bbb;
+    background: transparent;
+    border: none;
+}
+
+.details-open {
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    background: var(--primary-color);
+    border: none;
+}
+
+/* Messages */
+.message {
+    text-align: center;
+    padding: 60px;
+    color: #666;
+    font-size: 18px;
+}
+
+.error {
+    background: linear-gradient(135deg, #ffebee 0%, #fce4ec 100%);
+    color: #c62828;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 5px solid #c62828;
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+    body {
+        padding: 8px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    input[type="search"] {
+        width: auto;
+    }
+
+    .timeline-container {
+        padding: 16px;
+        overflow-x: auto;
+    }
+}
